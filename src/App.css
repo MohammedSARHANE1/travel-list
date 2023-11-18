@@ -1,0 +1,71 @@
+.App{
+  margin: 0;
+      padding: 0;
+   display: grid;
+   grid-template-rows: 90vh;
+   grid-template-rows: 20vh 10vh 60vh 10vh;
+
+  
+}
+.logo{
+  justify-content: center;
+  background-color: rgb(219, 119, 32);
+}
+.form{
+  background-color: orangered;
+}
+.form-item{
+  display: flex;
+}
+
+
+#numberDropdown{
+  margin: 15px;
+   height: 30px;
+   width: 80px;
+   border-radius: 50px;
+   background-color: bisque;
+
+}
+#items{
+  margin: 15px;
+   height: 30px;
+   width: 200px;
+   border-radius: 50px;
+   background-color: bisque;
+   grid-row-gap: 0
+
+}
+button{
+  margin: 15px;
+  height: 30px;
+  width: 80px;
+  border-radius: 50px;
+  background-color: rgb(9, 224, 20)
+}
+.packing-list{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: brown;
+  justify-content: center;
+  
+}
+.list{ 
+  display: inline;
+  list-style: none;
+  margin: 10px;
+ 
+}
+#checkbox{
+padding-top: 10pxs;
+
+  
+}
+
+.footer{
+  display: flex;
+  background-color: aquamarine;
+  justify-content: center;
+  
+}
