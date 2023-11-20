@@ -1,4 +1,5 @@
 
+import { useState} from 'react';
 import './App.css';
 
 const ititialItems=[
@@ -7,8 +8,15 @@ const ititialItems=[
   {id:3, description:"luggage",quantity:3, packed:false},
 ]
 export default function App() {
+return (
+  <div className='App'>
+  <Logo/>
+  <Form/>
  
-
+  <Footer/>
+  </div>
+);
+}
 function Logo(){
   return(
       <div className="logo">
@@ -18,36 +26,72 @@ function Logo(){
   );
 }
 function Form(){
+  const [description, setDescription] = useState("");
+ const [quantity,SetQuantity]=useState(1);
+ const [arr,setArr]=useState(ititialItems)
+
+  const handleChange = (event) => {
+     event.preventDefault();
+    setDescription(event.target.value);
+  };
+ 
+ const handlechange2=(e)=>{
+  SetQuantity(Number(e.target.value))
+  if (!description)return;
+  const newItem={description,quantity,packed:false,
+  id:Date.now()}
+  
+  
+}
+const handleChange3=(e)=>{
+  e.preventDefault();
+  const newItem2= {
+    id:arr.length+1,
+    description:description,
+    quantity:quantity,
+    packed:false
+    }
+    setArr([...arr, newItem2])
+    console.log(arr)
+}
+
+
   return(
-      <form className="form">
-        <div className='form-item'>
+      <>
+        <form className='form' >
          <h3> what need for your trip?</h3>
-          <select id="numberDropdown">{
+          <select id="numberDropdown"  value={quantity} onChange={handlechange2}>{
           Array.from({length:20},(_,i)=>i+1).map
-          ((num)=><option  value={num} key={num}>{num}</option>)
+          ((num)=><option value={num}  key={num}>{num}</option>)
           }
            
   </select>
-       <input id="items" type='text'  placeholder="items..."/>
-       <button> ADD</button> 
-      </div>
-    </form> 
+       <input  type="text" id="items" 
+        placeholder="items..."
+        value={description}
+        onChange={handleChange}  />
+       <button onClick={handleChange3} > ADD</button> 
+      </form>
+      <PackingList arr={arr}/>
+   </>
   );
 }
-function PackingList(){
+function PackingList(props){
   return(
       <ul className='packing-list'>
-        {ititialItems.map(item=>
-        <li key={item.id} className='list'> 
-        <input  id="checkbox" type="checkbox"/>
-        <span style={item.packed?{textDecoration:"line-through"}:{}}>
-          {item.quantity} {item.description} ❌
-          </span>
-        </li>)
+        {props.arr.map(item=>(
+         <li key={item.id} className='list'> 
+         <input   type="checkbox"/>
+         <span style={item.packed?{textDecoration:"line-through"}:{}}>
+           {item.quantity} {item.description} ❌
+           </span>
+         </li>
+        ))
         }
       </ul>
   )
 }
+
 function Footer(){
 
 
@@ -57,12 +101,4 @@ return(
   </div>
 )
 }
-return (
-  <div className='App'>
-  <Logo/>
-  <Form/>
-  <PackingList/>
-  <Footer/>
-  </div>
-);
-}
+

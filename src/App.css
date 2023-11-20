@@ -12,11 +12,11 @@
   background-color: rgb(219, 119, 32);
 }
 .form{
-  background-color: orangered;
-}
-.form-item{
   display: flex;
+  background-color: orangered;
+ 
 }
+
 
 
 #numberDropdown{
