@@ -8,16 +8,30 @@ const ititialItems = [
 ];
 export default function App() {
     const [arr, setArr] = useState(ititialItems);
+     
      function handleAddItems(item) {
        setArr((arr) => [...arr, item]);
      } 
-  
+     function handleDelete(id) {
+       setArr((arr) => arr.filter((item) => item.id !== id));
+     }
+     function handleChecked(id){
+     
+        setArr((arr)=>
+          arr.map((item)=>item.id === id ? { ...item, packed: !item.packed } : item
+      )
+        )
+     }
   return (
     <div className="App">
       <Logo />
       <Form handleAddItems={handleAddItems} />
-      <PackingList arr={arr} />
-      <Footer />
+      <PackingList
+        arr={arr}
+        handleDelete={handleDelete}
+        handleChecked={handleChecked}
+      />
+      <Footer  arr={arr}/>
     </div>
   );
 }
@@ -48,7 +62,7 @@ function Form({handleAddItems}) {
     if (!description) return;
     const newItem2 = { id: Date.now(), description, quantity, packed: false };
 
-    handleAddItems(newItem2);
+      handleAddItems(newItem2);
     setDescription("");
     SetQuantity(1);
   };
@@ -71,34 +85,44 @@ function Form({handleAddItems}) {
           value={description}
           onChange={handleChange}
         />
-        <button> ADD</button>
+        <button className="btn"> ADD</button>
       </form>
     
   );
 }
-function PackingList({arr}) {
+function PackingList({ arr, handleDelete, handleChecked }) {
   return (
     <ul className="packing-list">
       {arr.map((item) => (
         <li key={item.id} className="list">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={item.packed}
+            onChange={() => handleChecked(item.id)}
+          />
           <span style={item.packed ? { textDecoration: "line-through" } : {}}>
             {item.quantity}
-            {item.description} ❌
+            {item.description}
           </span>
+          <button className="btn2" onClick={() => handleDelete(item.id)}>
+            ❌
+          </button>
         </li>
       ))}
     </ul>
   );
 }
 
-function Footer() {
+ 
+function Footer({ arr }) {
+  const totalItems = arr.length;
+  const packedItems = arr.filter((item) => item.packed).length;
+
   return (
     <div className="footer">
       <p>
-        🧳 You have {} items on your list, and your already packcked {} ({})
+        🧳 You have {totalItems} items on your list, and you have already packed {packedItems} ({((packedItems / totalItems) * 100).toFixed(2)}%)
       </p>
     </div>
   );
-}
- 
+} 
