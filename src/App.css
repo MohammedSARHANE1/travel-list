@@ -1,76 +1,110 @@
-.App{
+.App {
   margin: 0;
-      padding: 0;
-   display: grid;
-   grid-template-rows: 90vh;
-   grid-template-rows: 20vh 10vh 60vh 10vh;
-
-  
+  padding: 0;
+  display: grid;
+  grid-template-rows: 20vh 10vh 60vh 10vh;
 }
-.logo{
+
+.logo {
   display: flex;
   justify-content: center;
-  background-color: rgb(219, 119, 32);
+  align-items: center;
+  background-color: rgb(231, 149, 41);
 }
-.form{
+
+.form {
   display: flex;
-  background-color: orangered;
- 
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(213, 110, 19, 0.994);
+  padding: 10px;
+  gap: 10px;
 }
 
-
-
-#numberDropdown{
-  margin: 15px;
-   height: 30px;
-   width: 80px;
-   border-radius: 50px;
-   background-color: bisque;
-
+#numberDropdown {
+  margin: 0 15px;
+  height: 30px;
+  width: 80px;
+  border-radius: 10vh 50px;
+  background-color: bisque;
+  padding: 5px;
+  border: none;
 }
-#items{
-  margin: 15px;
-   height: 30px;
-   width: 200px;
-   border-radius: 50px;
-   background-color: bisque;
-   grid-row-gap: 0
 
+#items {
+  margin: 0 15px;
+  height: 30px;
+  width: 200px;
+  border-radius: 50px;
+  background-color: bisque;
+  padding: 5px;
+  border: none;
 }
-.btn{
-  margin: 15px;
+
+.btn {
+  margin: 0 15px;
   height: 30px;
   width: 80px;
   border-radius: 50px;
-  background-color: rgb(9, 224, 20)
+  background-color: rgb(9, 224, 20);
+  border: none;
+  cursor: pointer;
 }
-.packing-list{
+
+.listMange {
   margin: 0;
-  padding: 0;
-  display: flex;
-  background-color: brown;
-  justify-content: center;
+  padding: 30px;
+  display: grid;
+  grid-template-rows:45vh ;
+  justify-content: space-around;
+
   
+  background-color: rgba(58, 37, 17, 0.918);
 }
-.list{ 
-  display: inline;
+
+.sortItems {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 10px 40px 10px 30px ;
+  justify-content: center;
+
+}
+
+#sortItem {
+  height: 30px;
+  border-radius: 50px;
+  background-color: bisque;
+  padding: 5px;
+  border: none;
+}
+
+.packing-list {
+  width: 60vw;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   list-style: none;
   margin: 10px;
- 
-}
-#checkbox{
-padding-top: 10pxs;
-
-  
+  padding: 0;
+  color:aliceblue
 }
 
-.footer{
+.footer {
   display: flex;
-  background-color: aquamarine;
+  align-items: center;
   justify-content: center;
+  background-color: aquamarine;
+  height: 10vh;
+  font-family: 'Arial', sans-serif; /* Sets the default font for the entire app */
+  font-size: 17px; 
   
 }
-.btn2{
+
+.btn2 {
   all: unset;
- 
+  cursor: pointer;
+  margin-left: 10px;
+  color: red;
 }
